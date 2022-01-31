@@ -2,11 +2,13 @@
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.favicon.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![DITA-OT 3.7](https://img.shields.io/badge/DITA--OT-3.7-blue.svg)](http://www.dita-ot.org/3.7)
-[![CI](https://github.com/jason-fox/fox.jason.favicon/workflows/CI/badge.svg)](https://github.com/jason-fox/fox.jason.favicon/actions?query=workflow%3ACI)
-[![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.favicon/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.favicon?branch=master)
-[![Documentation Status](https://readthedocs.org/projects/tabsdita-ot/badge/?version=latest)](https://tabsdita-ot.readthedocs.io/en/latest/?badge=latest)
 
 This is a [DITA-OT Plug-in](https://www.dita-ot.org/plugins) used to add a favicon to DITA HTML output.
+
+A favicon is a file containing a small brand image icon, associated with a particular website or web page.  A web designer can create such an icon and 
+upload it to a website, and graphical web browsers can then make use of it by displaying the icon on the associated browser tab.
+
+![](https://jason-fox.github.io/fox.jason.favicon/favicon.png)
 
 <details>
 <summary><strong>Table of Contents</strong></summary>
@@ -63,6 +65,41 @@ The `dita` command line tool requires no additional configuration.
 ## Usage
 
 
+#### Creating HTML output
+
+To run, use any `html` transform and add the `args.favicon`, `args.faviconpath` and `args.faviconroot` parameters
+
+```console
+PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
+  --args.favicon=FILENAME \
+  --args.faviconpath=DESTINATION_PATH_OF_FAVICON  \
+  --args.faviconroot=SOURCE_PATH_OF_FAVICON \
+```
+
+To refer to an exisiting file hosted on a server, use a URL as the `args.faviconpath` parameter
+
+```console
+PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
+  --args.favicon=FILENAME \
+  --args.faviconpath=https://example.com/static/assets
+```
+
+
+### Parameter Reference
+
+-  `args.favicon` - Specifies the name of the favicon file. The value of this parameter should be only the file name. The absolute path to the parent directory should be specified with `args.faviconroot`.
+
+-  `args.faviconpath` - Specifies the destination directory to which the favicon file is copied (relative to the output directory). Corresponds to the XSLT parameter FAVICONPATH. DITA-OT will copy the file to this location.
+
+> Tip: If `args.faviconpath` is not set, the favicon file will be copied to the root level of the 
+> output folder. To the favicon file to an output subfolder named `/static/assets`, set 
+> `args.faviconpath` to `/static/assets`.
+
+- `args.faviconroot` - specifies the source directory that contains the custom .favicon file.
+DITA-OT will copy the file from this location. Defaults to the image found within the plugin itself
+
+> Important: Enter the absolute path to the parent directory of the favicon file specified with 
+> `args.favicon`.
 
 ## License
 
