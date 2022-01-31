@@ -87,7 +87,7 @@ PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
 
 ### Parameter Reference
 
--  `args.favicon` - Specifies the name of the favicon file. The value of this parameter should be only the file name. The absolute path to the parent directory should be specified with `args.faviconroot`.
+-  `args.favicon` - Specifies the name of the favicon file. The value of this parameter should be only the file name. The absolute path to the parent directory should be specified with `args.faviconroot`. Defaults to [`favicon.svg`](/includes/favicon.svg) - the name of the default image found within the plugin itself
 
 -  `args.faviconpath` - Specifies the destination directory to which the favicon file is copied (relative to the output directory). Corresponds to the XSLT parameter FAVICONPATH. DITA-OT will copy the file to this location.
 
