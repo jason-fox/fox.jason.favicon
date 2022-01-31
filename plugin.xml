@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="dita-ot/plugin.rnc" type="application/relax-ng-compact-syntax"?>
+<!--
+  This file is part of the DITA-OT Favicon Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
+-->
+<plugin id="fox.jason.favicon" version="1.0.0">
+
+  <feature extension="ant.import" file="process_favicon.xml"/>
+  <!-- HTML5 extension points -->   
+  <feature extension="dita.xsl.html5" value="xsl/xhtml.xsl" type="file"/>
+  <!-- XHTML extension points -->
+  <feature extension="dita.xsl.xhtml" value="xsl/xhtml.xsl" type="file"/>
+  <!-- Uses the default depend.preprocess.copy-html.pre extension point -->
+  <feature extension="depend.preprocess.copy-html.pre" value="favicon.copy"/>
+  <!-- Uses the default depend.preprocess.pre extension point -->
+  <feature extension="depend.preprocess.pre" value="favicon.init"/>
+
+  <feature extension="dita.conductor.html5.param" file="params.xml"/>
+
+
+  <transtype extends="base-html" abstract="true" desc="HTML-based output">
+    <param name="args.favicon" desc="Specifies the name of a favicon file." type="string"/>
+    <param name="args.faviconpath" desc="Specifies the location of a copied favicon file relative to the output directory." type="string"/>
+    <param name="args.faviconroot" desc="Specifies the directory that contains the favicon file." type="string"/>
+  </transtype>
+</plugin>

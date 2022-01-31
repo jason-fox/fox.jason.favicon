@@ -1,0 +1,11 @@
+ <params xmlns:if="ant:if" xmlns:unless="ant:unless">
+  <param name="FAVICON" 
+    expression="${args.favicon.file}" 
+    if:set="args.favicon.file"
+  />
+  <param
+    name="FAVICON_PATH"
+    expression="${user.faviconpath}"
+    if:set="user.faviconpath"
+  />
+</params>

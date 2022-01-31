@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--ant-->
+<!--
+  This file is part of the DITA-OT Favicon Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
+-->
+<project name="fox.jason.favicon">
+  <target name="favicon.init">
+
+
+    <property name="args.faviconroot" value="${dita.plugin.fox.jason.favicon.dir}/includes"/>
+    <property name="args.favicon" value="favicon.svg"/>
+
+    <!-- begin to check and init favicon relevant properties -->
+    <condition property="user.faviconpath.url">
+      <or>
+        <contains string="${args.faviconpath}" substring="http://"/>
+        <contains string="${args.faviconpath}" substring="https://"/>
+      </or>
+    </condition>
+    <condition property="args.faviconpath.absolute">
+      <isabsolute path="${args.faviconpath}"/>
+    </condition>
+    <!-- Set the faviconpath as default empty directory when there is no user
+      input faviconpath or user input faviconpath is a local absolute path. -->
+    <condition property="user.faviconpath" value="">
+      <or>
+        <not>
+          <isset property="args.faviconpath"/>
+        </not>
+        <isset property="args.faviconpath.absolute"/>
+      </or>
+    </condition>
+    <property name="user.faviconpath" value="${args.faviconpath}/"/>
+    <condition
+      property="args.favicon.real"
+      value="${args.faviconroot}${file.separator}${args.favicon}"
+    >
+      <isset property="args.faviconroot"/>
+    </condition>
+    <condition property="args.favicon.real" value="${args.favicon}">
+      <not>
+        <isset property="args.faviconroot"/>
+      </not>
+    </condition>
+    <available file="${args.favicon.real}" property="args.favicon.present" type="file"/>
+    <basename property="args.favicon.file.temp" file="${args.favicon}"/>
+    <condition property="args.favicon.file" value="${args.favicon.file.temp}">
+      <or>
+        <isset property="args.favicon.present"/>
+        <isset property="user.faviconpath.url"/>
+      </or>
+    </condition>
+    <!-- end to check and init favicon relevant parameters -->
+  </target>
+
+
+  <target
+    name="favicon.copy"
+    unless="user.faviconpath.url"
+    description="Copy favicon file"
+  >
+    <property
+      name="user.faviconpath.real"
+      location="${dita.output.dir}/${user.faviconpath}"
+    />
+    <mkdir dir="${user.faviconpath.real}"/>
+    <copy todir="${user.faviconpath.real}">
+      <fileset dir="${args.faviconroot}" includes="${args.favicon}" />
+    </copy>
+  </target>
+</project>
