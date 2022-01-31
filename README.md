@@ -68,7 +68,8 @@ The `dita` command line tool requires no additional configuration.
 
 #### Creating HTML output
 
-To run, use any `html` transform and add the `args.favicon`, `args.faviconpath` and `args.faviconroot` parameters
+To run, use any `html` transform and add the `args.favicon`, `args.faviconpath` and `args.faviconroot` parameters.
+The new `args.favicon.*` parameters follow the existing syntax used by DITA-OT for CSS files.
 
 ```console
 PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
@@ -86,8 +87,6 @@ PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
 ```
 
 ### Parameter Reference
-
-Favicon parameters follow the existing syntax used for CSS files:
 
 -  `args.favicon` - Specifies the name of the favicon file. The value of this parameter should be only the file name. The absolute path
     to the parent directory should be specified with `args.faviconroot`. Defaults to [`favicon.svg`](/includes/favicon.svg) - the name of
