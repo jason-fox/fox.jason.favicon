@@ -4,10 +4,12 @@
   This file is part of the DITA-OT Favicon Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<project name="fox.jason.favicon">
+<project 
+  xmlns:if="ant:if"
+  xmlns:unless="ant:unless"
+  name="fox.jason.favicon">
+
   <target name="favicon.init">
-
-
     <property name="args.faviconroot" value="${dita.plugin.fox.jason.favicon.dir}/includes"/>
     <property name="args.favicon" value="favicon.svg"/>
 
@@ -60,12 +62,22 @@
     unless="user.faviconpath.url"
     description="Copy favicon file"
   >
+    <local name="is.html.transform"/>
+    <condition property="is.html.transform">
+      <or>
+        <equals arg1="${out.ext}" arg2=".html"/>
+        <!-- add any additional missing transtypes here -->
+        <contains string="${transtype}" substring="HTML" casesensitive="no"/>
+        <contains string="${transtype}" substring="eclipsehelp" casesensitive="no"/>
+      </or>
+    </condition>
+
     <property
       name="user.faviconpath.real"
       location="${dita.output.dir}/${user.faviconpath}"
     />
-    <mkdir dir="${user.faviconpath.real}"/>
-    <copy todir="${user.faviconpath.real}">
+    <mkdir dir="${user.faviconpath.real}" if:set="is.html.transform"/>
+    <copy todir="${user.faviconpath.real}" if:set="is.html.transform">
       <fileset dir="${args.faviconroot}" includes="${args.favicon}" />
     </copy>
   </target>

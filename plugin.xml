@@ -12,7 +12,7 @@
   <!-- XHTML extension points -->
   <feature extension="dita.xsl.xhtml" value="xsl/xhtml.xsl" type="file"/>
   <!-- Uses the default depend.preprocess.copy-html.pre extension point -->
-  <feature extension="depend.preprocess.copy-html.pre" value="favicon.copy"/>
+  <feature extension="depend.preprocess.post" value="favicon.copy"/>
   <!-- Uses the default depend.preprocess.pre extension point -->
   <feature extension="depend.preprocess.pre" value="favicon.init"/>
 
