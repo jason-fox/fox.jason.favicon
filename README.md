@@ -1,7 +1,7 @@
 # HTML Favicon Plugin for DITA-OT
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.favicon.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![DITA-OT 3.7](https://img.shields.io/badge/DITA--OT-3.7-blue.svg)](http://www.dita-ot.org/3.7)
+[![DITA-OT 4.2](https://img.shields.io/badge/DITA--OT-4.2-green.svg)](http://www.dita-ot.org/4.2)
 
 This is a [DITA-OT Plug-in](https://www.dita-ot.org/plugins) used to add a favicon to DITA HTML output.
 
@@ -25,7 +25,7 @@ on the associated browser tab.
 
 ## Install
 
-The DITA-OT Favicon Plug-in  has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended
+The DITA-OT Favicon Plug-in  has been tested against [DITA-OT 4.x](http://www.dita-ot.org/download). It is recommended
 that you upgrade to the latest version.
 
 ### Installing DITA-OT
@@ -35,9 +35,9 @@ that you upgrade to the latest version.
 The DITA-OT Favicon Plug-in  is a file reader for the DITA Open Toolkit.
 
 -   Full installation instructions for downloading DITA-OT can be found
-    [here](https://www.dita-ot.org/3.7/topics/installing-client.html).
+    [here](https://www.dita-ot.org/4.2/topics/installing-client.html).
 
-    1.  Download the `dita-ot-3.7.zip` package from the project website at
+    1.  Download the `dita-ot-4.2.zip` package from the project website at
         [dita-ot.org/download](https://www.dita-ot.org/download)
     2.  Extract the contents of the package to the directory where you want to install DITA-OT.
     3.  **Optional**: Add the absolute path for the `bin` directory to the _PATH_ system variable.
@@ -45,9 +45,9 @@ The DITA-OT Favicon Plug-in  is a file reader for the DITA Open Toolkit.
     This defines the necessary environment variable to run the `dita` command from the command line.
 
 ```console
-curl -LO https://github.com/dita-ot/dita-ot/releases/download/3.7/dita-ot-3.7.zip
-unzip -q dita-ot-3.7.zip
-rm dita-ot-3.7.zip
+curl -LO https://github.com/dita-ot/dita-ot/releases/download/4.2/dita-ot-4.2.zip
+unzip -q dita-ot-4.2.zip
+rm dita-ot-4.2.zip
 ```
 
 ### Installing the Plug-in
@@ -107,4 +107,4 @@ PATH_TO_DITA_OT/bin/dita -f [html5|xhtml]  -o out -i PATH_TO_DITAMAP \
 
 ## License
 
-[Apache 2.0](LICENSE) © 2022 Jason Fox
+[Apache 2.0](LICENSE) © 2022 - 2024 Jason Fox
